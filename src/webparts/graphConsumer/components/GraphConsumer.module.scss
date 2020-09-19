@@ -27,6 +27,15 @@
     @include ms-fontColor-white;
   }
 
+  .form {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+  
+  label {
+    @include ms-fontColor-white;
+  }
+
   .subTitle {
     @include ms-font-l;
     @include ms-fontColor-white;
