@@ -5,5 +5,4 @@ export interface IGraphConsumerProps {
 //  description: string;
   clientMode: ClientMode;
   context: WebPartContext;
-  //searchFor: string;
 }

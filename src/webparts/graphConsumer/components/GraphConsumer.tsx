@@ -49,7 +49,7 @@ let _usersListColumns = [
   },
 ];
 
-export default class GraphConsumer extends React.Component<IGraphConsumerProps, {}> {
+export default class GraphConsumer extends React.Component<IGraphConsumerProps, IGraphConsumerState > {
 
   constructor(props: IGraphConsumerProps, state: IGraphConsumerState) {
     super(props);
