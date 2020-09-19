@@ -3,12 +3,12 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { ClientMode } from "./components/ClientMode";
 import {
-  BaseClientSideWebPart,
+//  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneChoiceGroup,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
-//import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'GraphConsumerWebPartStrings';
 import GraphConsumer from './components/GraphConsumer';
 import { IGraphConsumerProps } from './components/IGraphConsumerProps';
