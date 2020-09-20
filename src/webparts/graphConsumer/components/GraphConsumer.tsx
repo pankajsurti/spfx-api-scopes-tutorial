@@ -83,6 +83,21 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
       break;
     }
   }
+  private _searchForMailbox = (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button, MouseEvent>) : void => {
+    console.log(this.props.clientMode);
+  
+    // Based on the clientMode value search users
+    switch (this.props.clientMode)
+    {
+      case ClientMode.aad:
+        this._searchWithAad();
+        break;
+      case ClientMode.graph:
+      this._searchWithGraph();
+      break;
+    }
+  }
+  
 
   private _searchWithAad = (): void => {
     // Log the current operation
@@ -202,6 +217,11 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
                     title='Search'
                     onClick={ this._search }
                   />
+                <PrimaryButton
+                    text='Search for mailbox'
+                    title='Search for mailbox'
+                    onClick={ this._searchForMailbox }
+                  />                  
               </p>
               {
                 (this.state.users != null && this.state.users.length > 0) ?
