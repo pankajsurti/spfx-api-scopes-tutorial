@@ -90,14 +90,44 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
     switch (this.props.clientMode)
     {
       case ClientMode.aad:
-        this._searchWithAad();
+        this._searchForMailboxWithAad();
         break;
       case ClientMode.graph:
-      this._searchWithGraph();
+      this._searchForMailboxWithGraph();
       break;
     }
   }
+  private _searchForMailboxWithAad = (): void => {
+    console.log("Using _searchForMailboxWithAad() method");
+    // Using Graph here, but any 1st or 3rd party REST API that requires Azure AD auth can be used here.
+    this.props.context.aadHttpClientFactory
+      .getClient("https://graph.microsoft.com")
+      .then((client: AadHttpClient) => {
+        // Search for mailFolders
+        return client
+          .get(
+            `https://graph.microsoft.com/v1.0/users/${escape(this.state.searchFor)}/mailFolders`,
+            AadHttpClient.configurations.v1
+          );
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
   
+        // Log the result in the console for testing purposes
+        console.log(json);
+
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  private _searchForMailboxWithGraph = () : void => {
+    // Log the current operation
+    console.log("Using _searchForMailboxWithGraph() method");
+  }
 
   private _searchWithAad = (): void => {
     // Log the current operation
